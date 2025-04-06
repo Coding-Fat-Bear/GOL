@@ -5,7 +5,8 @@ pub const  SIZE:usize = 6;
 fn main() {
    let  u_matrix = matrix_creation();
    let  r_matrix = u_matrix;
-   let mut state :bool = get_3x3(&u_matrix,1,1);
+   let mut state :bool = get_3x3(&u_matrix,0,2);
+   //hange this hard coded num to fetch from (+1+1 to -last-last mid point)butloop will be for 0,0 to last-3,last-3
    if state{
       println!("the cell is alive");
    }else{
@@ -16,6 +17,7 @@ fn main() {
    println!("{:?}", row);
    }
 }
+
 fn get_3x3(mat:&[[i8;6];6],row:usize,col:usize)-> bool{
    let mut  count:i8 =0;
    let mut alive=true;
@@ -35,7 +37,7 @@ fn get_3x3(mat:&[[i8;6];6],row:usize,col:usize)-> bool{
    }
    println!("the cell is has {count} neighbour");
    if !alive && count>2{
-      alive =true
+      alive =true//birth
    }
    if alive && (count==0 || count>3) {
       alive = false; //overpopulation&isolated
